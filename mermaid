@@ -1,0 +1,146 @@
+@startuml
+set namespaceSeparator ::
+
+
+
+
+
+
+
+class "EventData" {
+  +DateTime eventDate
+  +DateTime? eventEndDate
+  +String description
+  +String eventId
+  +String? imageUrl
+  +int? location
+  +String title
+  +String tag
+  +String pointOfContact
+  +String venue
+  +List<String>? link
+  +bool scanningStarted
+  +String rulesAndRegulation
+  +String registrationProcess
+  +String termsAndCondition
+  +int hasFormData
+  +Map<String, dynamic> toJson()
+}
+
+class "EventDetails" {
+  +EventData details
+  +bool? isPublic
+  +String createdBy
+  +String userName
+  +bool isFeatured
+  +bool isInformal
+  +List<String> images
+  +List<PriceData>? priceData
+  +List<TimeLineData>? timeLineData
+  +int eventVisibility
+  +int registrationType
+  +FormData? formData
+  +Map<String, dynamic> toJson()
+}
+
+"EventDetails" o-- "EventData"
+"EventDetails" o-- "FormData"
+"EventDetails" o-- "TimeLineData"
+
+class "TicketData" {
+  +String userId
+  +String tokenId
+  +bool isVerified
+  +String name
+  +String collegeAddress
+  +bool isAttending
+  +bool paymentStatus
+  +int mobile
+  +String? verifiedBy
+  +List<TeamDetails>? teamDetails
+  +List<FormResponseData>? formResponse
+  +DateTime? verificationTime
+  +String? email
+  +String userEmail
+}
+
+class "FormData" {
+  +DateTime startDate
+  +DateTime endDate
+  +int teamMinSize
+  +int teamMaxSize
+  +List<DyamicFormData> data
+  +Map<String, dynamic> toJson()
+}
+
+
+
+
+
+
+
+class "EventDataRequest" {
+  +DateTime eventDate
+  +String description
+  +String imageUrl
+  +int location
+  +String title
+  +String tag
+  +String venue
+  +bool? hasTimeLine
+  +Map<String, dynamic> toJson()
+}
+
+class "EventDetailsRequest" {
+  +EventDataRequest details
+  +List<String> images
+  +List<TimeLineData>? timeLineData
+  +FormData? formData
+  +Map<String, dynamic> toJson()
+}
+
+"EventDetailsRequest" o-- "EventDataRequest"
+"EventDetailsRequest" o-- "FormData"
+"EventDetailsRequest" o--"TimeLineData"
+
+
+
+
+
+
+
+
+class "TimeLineData" {
+  +String title
+  +String description
+  +int id
+  +DateTime? eventDate
+  +Map<String, dynamic> toJson()
+}
+
+class "UserData" {
+  +String userId
+  +String userName
+  +String email
+  +String profilePicUrl
+  +String graduationYear
+  +int gender
+  +String collegeName
+  +String collegeCity
+  +String collegeState
+  +String branch
+  +int coins
+  +int collegePinCode
+  +String referalCode
+  +String uniqueId
+  +int phoneNumber
+  +int? rollNumber
+  +String? fcmId
+  +int roleId
+  +List<String>? events
+  +Map<String, dynamic> toJson()
+}
+
+
+
+@enduml
